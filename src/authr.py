@@ -1,7 +1,10 @@
-import os, argparse, csv
+import argparse
+import csv
+import os
+
+import auth_scrape_functions as asf
 import map_functions as mf
 import shodan_functions as sf
-import auth_scrape_functions as asf
 
 shodan_ip_info = {}
 
@@ -10,9 +13,6 @@ class authr():
     def __init__(self, log_file):
         self.auth_row_list = []
         self.log_file = log_file
-
-    def __repr__(self):
-        print(self.auth_row_list[1])
 
     @staticmethod
     def set_shodan_api_environment(shodan_api_key):
@@ -201,25 +201,25 @@ def main():
 
     if filename is None:
         filename = 'example_map.html'
-    if csv_filename is None:
-        csv_filename = 'example.csv'
+
 
     authr.set_shodan_api_environment(shodan_api_key)
     marker_list = authr(log_file_path).parse_auth_log(log_file_path)
 
-    if args['csv'] is not None:
+    if csv_filename:
+        print("Csv created")
         authr.create_authr_csv(marker_list, csv_filename)
 
-    if args['heatmap'] is not None:
+    if args['heatmap'] is True:
         authr.create_authr_map_with_heatmap_plots(marker_list, filename)
 
-    if args['marker'] is not None:
+    if args['marker'] is True:
         authr.create_authr_map_with_markers(marker_list, filename)
 
-    if args['polygon'] is not None:
+    if args['polygon'] is True:
         authr.create_authr_map_with_polygon_plots(marker_list, filename)
 
-    if args['scatter'] is not None:
+    if args['scatter'] is True:
         authr.create_authr_map_with_scatter_plots(marker_list, filename)
 
 

@@ -14,7 +14,11 @@ Here is a sample of the data on a heat map:
 ***
 ![Heat Map](https://raw.githubusercontent.com/JLDevOps/Authr/master/Documentation/Images/heatmap-authr.png)
 
-** This tool only scrape authentication logs found via Linux servers (i.e. Ubuntu, Debian, etc.).  This may also be able to work with servers that are using fail2ban.
+Here is a sample of the data on a heat map: 
+***
+![Heat Map](https://raw.githubusercontent.com/JLDevOps/Authr/master/Documentation/Images/marker-map.png)
+
+** This tool scrapes authentication logs found via Linux servers (i.e. Ubuntu, Debian, etc.).  This may also be able to work with servers that are using fail2ban.
 
 ## Available Functions
 The following functionality are currently available from Authr:
