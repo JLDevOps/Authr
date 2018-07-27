@@ -14,9 +14,9 @@ Here is a sample of the data on a heat map:
 ***
 ![Heat Map](https://raw.githubusercontent.com/JLDevOps/Authr/master/Documentation/Images/heatmap-authr.png)
 
-Here is a sample of the data on a heat map: 
+Here an example of a map with markers for each data point: 
 ***
-![Heat Map](https://raw.githubusercontent.com/JLDevOps/Authr/master/Documentation/Images/marker-map.png)
+![Marker Map](https://raw.githubusercontent.com/JLDevOps/Authr/master/Documentation/Images/marker-map.png)
 
 ** This tool scrapes authentication logs found via Linux servers (i.e. Ubuntu, Debian, etc.).  This may also be able to work with servers that are using fail2ban.
 
@@ -44,16 +44,9 @@ Go [here](https://account.shodan.io/login) to sign up for an account and get an 
 
 The following steps go through installing Python dependencies and setting up the environment for the tool.
 
-1. Install the Python modules for this tool
+1. Install Authr
     ```
-    $ cd Authr
-    $ pip install -r requirements.txt
-    ```
-2. (Optionally) Install VirtualEnv to setup a separate Python environment for the project.
-    ```
-    $ pip install virtualenv
-    $ virtualenv venv
-    $ source venv/Scripts/activate
+    $ pip install Authr
     ```
 
 ### Usage
@@ -89,27 +82,6 @@ Below is a code sample on how to generate a heat map and csv from your authentic
     ```bash
     $ python test.py -a {__path_to_authentication_log_file__} -k {__Shodan_API_Key__}
     ```
-#### Using Authr via Terminal/Command Line
-You can also run the authr.py file by itself, and provide arguments to what functionality you would like to use.
-
-```bash
-    $ python authr.py -a {__path_to_authentication_log_file__} -k {___Shodan_API_Key__}
-```
-
-Command Line / Terminal Arguments:
-1. -a (Authentication File)
-2. -k (Shodan API Key)
-3. -f (Filename of your output file (also provide path))
-4. -hm (Generate a heat map)
-5. -c (Generate a csv)
-6. -s (Generate a scatter plot map)
-7. -p (Generate a polygon plot map)
-8. -m (Generate a marker plot map)
-
-Sample command to generate a heat map: 
-```
-    $ python authr.py -a \\example-logs\\auth-01-14-2018.log -k {___Shodan_API_Key__} -f example-map.html -hm
-```
 
 ## Built With
 
@@ -117,16 +89,9 @@ Sample command to generate a heat map:
 * [Shodan](https://shodan.io/) - Search engine API for Internet-connected devices.
 * [GMPLOT](https://github.com/vgm64/gmplot) - Used to generate maps with pins for the location of authentications.
 
-## Background Information
-
-This tool was created out of my interest regarding the amount of SSH authentication attempts made on one of my personal Linux servers.
-  I was curious at where the attempts were coming from, and decided to scrape and reverse search the IP addresses from the auth logs.
-This became more of a research project to figure out where and how attackers found my personal server.
-
 ## Authors
 
 * **Jimmy Le** - [Jldevops](https://github.com/jldevops)
-
 
 ## License
 
