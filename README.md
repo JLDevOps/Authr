@@ -1,6 +1,6 @@
 # Authr
 
-A visualization tool that can extract information from authentication logs (auth.logs), reverse-search the data, and visualize the origination of the authentication attempts. 
+A visualization python package that can extract information from authentication logs (auth.logs), reverse-search the data, and visualize the origination of the authentication attempts. 
 
 The following information are extracted from the logs:
 1. IP Address
@@ -30,7 +30,7 @@ The following functionality are currently available from Authr:
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine.  You will be able to scrape your own authentication logs
+These instructions will get you up and running with authr on your local machine.  You will be able to scrape your own authentication logs.
 
 ### Prerequisites
 
