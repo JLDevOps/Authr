@@ -1,4 +1,4 @@
-import argparse
+# import argparse
 import csv
 import os
 
@@ -17,6 +17,7 @@ class authr():
     @staticmethod
     def set_shodan_api_environment(shodan_api_key):
         os.environ['SHODAN_API_KEY'] = str(shodan_api_key)
+        return 'API_KEY_SET'
 
     def parse_auth_log(self, log_file):
         with open(log_file, encoding='utf-8') as file:
@@ -181,47 +182,46 @@ class auth_marker():
         print("user: ", str(self.user))
         print("port: ", str(self.port))
 
-
-def main():
-    parser = argparse.ArgumentParser(description='Scrape Auth Logs and Inserted into the DB')
-    parser.add_argument('-a', '--auth', help='Auth Log', required=True)
-    parser.add_argument('-k', '--key', help='Shodan Key', required=True)
-    parser.add_argument('-f', '--filename', help='Filename and Path', required=False)
-    parser.add_argument('-hm', '--heatmap', help='Heat Map', required=False, action='store_true')
-    parser.add_argument('-c', '--csv', help='CSV', required=False)
-    parser.add_argument('-s', '--scatter', help='Scatter Plot', required=False, action='store_true')
-    parser.add_argument('-p', '--polygon', help='Polygon Plot', required=False, action='store_true')
-    parser.add_argument('-m', '--marker', help='Marker Plot', required=False, action='store_true')
-
-    args = vars(parser.parse_args())
-    log_file_path = args['auth']
-    shodan_api_key = args['key']
-    filename = args['filename']
-    csv_filename = args['csv']
-
-    if filename is None:
-        filename = 'example_map.html'
-
-
-    authr.set_shodan_api_environment(shodan_api_key)
-    marker_list = authr(log_file_path).parse_auth_log(log_file_path)
-
-    if csv_filename:
-        print("Csv created")
-        authr.create_authr_csv(marker_list, csv_filename)
-
-    if args['heatmap'] is True:
-        authr.create_authr_map_with_heatmap_plots(marker_list, filename)
-
-    if args['marker'] is True:
-        authr.create_authr_map_with_markers(marker_list, filename)
-
-    if args['polygon'] is True:
-        authr.create_authr_map_with_polygon_plots(marker_list, filename)
-
-    if args['scatter'] is True:
-        authr.create_authr_map_with_scatter_plots(marker_list, filename)
-
-
-if __name__ == "__main__":
-    main()
+# def main():
+#     parser = argparse.ArgumentParser(description='Scrape Auth Logs and Inserted into the DB')
+#     parser.add_argument('-a', '--auth', help='Auth Log', required=True)
+#     parser.add_argument('-k', '--key', help='Shodan Key', required=True)
+#     parser.add_argument('-f', '--filename', help='Filename and Path', required=False)
+#     parser.add_argument('-hm', '--heatmap', help='Heat Map', required=False, action='store_true')
+#     parser.add_argument('-c', '--csv', help='CSV', required=False)
+#     parser.add_argument('-s', '--scatter', help='Scatter Plot', required=False, action='store_true')
+#     parser.add_argument('-p', '--polygon', help='Polygon Plot', required=False, action='store_true')
+#     parser.add_argument('-m', '--marker', help='Marker Plot', required=False, action='store_true')
+#
+#     args = vars(parser.parse_args())
+#     log_file_path = args['auth']
+#     shodan_api_key = args['key']
+#     filename = args['filename']
+#     csv_filename = args['csv']
+#
+#     if filename is None:
+#         filename = 'example_map.html'
+#
+#
+#     authr.set_shodan_api_environment(shodan_api_key)
+#     marker_list = authr(log_file_path).parse_auth_log(log_file_path)
+#
+#     if csv_filename:
+#         print("Csv created")
+#         authr.create_authr_csv(marker_list, csv_filename)
+#
+#     if args['heatmap'] is True:
+#         authr.create_authr_map_with_heatmap_plots(marker_list, filename)
+#
+#     if args['marker'] is True:
+#         authr.create_authr_map_with_markers(marker_list, filename)
+#
+#     if args['polygon'] is True:
+#         authr.create_authr_map_with_polygon_plots(marker_list, filename)
+#
+#     if args['scatter'] is True:
+#         authr.create_authr_map_with_scatter_plots(marker_list, filename)
+#
+#
+# if __name__ == "__main__":
+#     main()
