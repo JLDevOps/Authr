@@ -1,12 +1,12 @@
 # Authr
 
-A visualization tool that can extract information from authentication logs (auth.logs), reverse-search the data, and visualize the origination of the authentication attempts. 
+A visualization tool that can extract information from any server log (i.e. HTTP server/Django/Auth/etc), reverse-search the data, and visualize the origination of the authentication attempts. 
 
 The following information are extracted from the logs:
 1. IP Address
 2. Port Number
 3. Username
-4. Authentication Message
+4. Server Message
 
 Once the information is extracted, each IP from the authentication attempt is checked with Shodan to get it's location data.  An HTML page is created with a map and pins (associated to each IP).
 
@@ -14,23 +14,24 @@ Here is a sample of the data on a heat map:
 ***
 ![Heat Map](https://raw.githubusercontent.com/JLDevOps/Authr/master/Documentation/Images/heatmap-authr.png)
 
-Here is a sample of the data on a heat map: 
+Here is a sample of the data with markers on a map: 
 ***
-![Heat Map](https://raw.githubusercontent.com/JLDevOps/Authr/master/Documentation/Images/marker-map.png)
+![Marker Map](https://raw.githubusercontent.com/JLDevOps/Authr/master/Documentation/Images/marker-map.png)
 
-** This tool scrapes authentication logs found via Linux servers (i.e. Ubuntu, Debian, etc.).  This may also be able to work with servers that are using fail2ban.
+**This project is also a Python Package now via PyPi (*![Authr](https://pypi.org/project/authr/)*).
+
 
 ## Available Functions
 The following functionality are currently available from Authr:
-1. Create a CSV from authentication logs
-2. Create an html heat map from the authentication logs 
-3. Create an html scatter map from the authentication log data
-4. Create an html map with markers from the authentication log data
-5. Create an html map with a ploygon plot (connecting lines to each point) from the authentication log data
+1. Create a CSV from server logs
+2. Create an html heat map from the server logs 
+3. Create an html scatter map from the server log data
+4. Create an html map with markers from the server log data
+5. Create an html map with a polygon plot (connecting lines to each point) from the server log data
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine.  You will be able to scrape your own authentication logs
+These instructions will get you a copy of the project up and running on your local machine.  You will be able to scrape your own server logs.
 
 ### Prerequisites
 
@@ -59,15 +60,15 @@ The following steps go through installing Python dependencies and setting up the
 ### Usage
 
 #### Sample Code - Heat Map & CSV
-Below is a code sample on how to generate a heat map and csv from your authentication log:
+Below is a code sample on how to generate a heat map and csv from your server log:
 
 1. Place the following in a python file
     ```bash
         import authr, argparse, os
          
         def main():
-            parser = argparse.ArgumentParser(description='Scrape Auth Logs and Inserted into the DB')
-            parser.add_argument('-a', '--auth', help='Auth Log', required=True)
+            parser = argparse.ArgumentParser(description='Scrape Server Logs and Inserted into the DB')
+            parser.add_argument('-a', '--auth', help='Server Log', required=True)
             parser.add_argument('-k', '--key', help='Shodan Key', required=True)
     
             args = vars(parser.parse_args())
@@ -87,13 +88,13 @@ Below is a code sample on how to generate a heat map and csv from your authentic
     ```
 2. Run the following command
     ```bash
-    $ python test.py -a {__path_to_authentication_log_file__} -k {__Shodan_API_Key__}
+    $ python test.py -a {__path_to_server_log_file__} -k {__Shodan_API_Key__}
     ```
 #### Using Authr via Terminal/Command Line
 You can also run the authr.py file by itself, and provide arguments to what functionality you would like to use.
 
 ```bash
-    $ python authr.py -a {__path_to_authentication_log_file__} -k {___Shodan_API_Key__}
+    $ python authr.py -a {__path_to_server_log_file__} -k {___Shodan_API_Key__}
 ```
 
 Command Line / Terminal Arguments:
