@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="authr",
-    version="1.3.1",
+    version="1.3.3",
     author="Jimmy Le (JLDevOps)",
     author_email="jldevops@gmail.com",
-    description="A visualization tool that can extract information from authentication logs (auth.logs), reverse-search the data, and visualize the origination of the authentication attempts.",
+    description="A visualization python package that can extract information from any server log (i.e. HTTP server/Django/Auth/etc), reverse-search the data, and visualize the origination of the authentication attempts.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/JLDevOps/Authr",
