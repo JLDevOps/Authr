@@ -4,7 +4,7 @@ click==6.7
 click-plugins==1.0.3
 colorama==0.3.9
 Flask==1.0
-Flask-Cors==3.0.3
+Flask-Cors==3.0.9
 geoip2==2.6.0
 gmplot==1.2.0
 idna==2.6
